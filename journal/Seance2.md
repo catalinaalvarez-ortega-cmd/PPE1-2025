@@ -41,3 +41,10 @@
 ## wc - l = compte les lignes trouvées.
 
 ## grep = sélectionne les ligne où "mot" apparait
+
+#!/usr/bin/bash
+
+
+##Exercice 2 
+
+## 
