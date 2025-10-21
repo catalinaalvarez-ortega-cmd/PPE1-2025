@@ -81,11 +81,14 @@ done
 
 commenter l'exercice 4 : 
 
-dans la condition on donne un nombre d'arguments dans le programme, ici 1 argument
-qui va affichier ensuite l'echo qui veut dire  ce programme demande un argument + le nombre d'arguments
+shebang 
 
-dans le deuxième exercice 
- on lui a attribué une valeur à l'argument à FICHIER_URLS = $1
- enuite OK et NOK 
+On a une condition qui test si le nombre d'argument est égal à 1 lors de l'execution du script. Si la condition n'est pas respecté, la commande exit arrête l'execution du script. 
+
+Ensuite, on a trois variables : fichier_urls défini par l'argument 1, les variables OK et NOK définies par 0. 
+
+La boucle while utilise la commande "read", pour lire ligne par ligne le fichier. A chaque tour de boucle la commande echo permet d'afficher la ligne dans la sortie standard. Nous avons ensuite, une condition à double crochets, qui permet de vérifier, à l'aide d'une expression régulière, si la ligne commence par http:// ou https://, en outre si la condition est validée, le script affiche en sortie standard : ressemble à une URL valide et la varible OK s'incremente de 1. Cependant, si la condition n'est pas validée, les script affiche : "ne ressemble pas à une URL valide" et la varible NOK s'increment de 1. finalement, "done" termine la boucle while quand toutes les lignes sont lues, de même le script affiche les nombres des URls considérées comme correctes et "lignes douteuses"
+
+
  
                               
