@@ -20,12 +20,14 @@ cd $DATADIR
 echo "Nous sommes ici" :
 pdw
 
-créer des varibales pour stocker la variable pour récuperer les résultat
-$() commande ou pipeline, va être stocker dans la variable. 
+* créer des varibales pour stocker la variable pour récuperer les résultat
+$()
+
+* commande ou pipeline, va être stocker dans la variable. 
 A=$(bash ./compte.sh $DATADIR 2016 $TYPE)
 
-|| => "ou"
-&& => "et"
+> || => "ou"
+> && => "et"
 
 
 EXERCICE 3. 
@@ -79,7 +81,7 @@ do
 done
 
 
-commenter l'exercice 4 : 
+## commenter l'exercice 4 : 
 
 shebang 
 

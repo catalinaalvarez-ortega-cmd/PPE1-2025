@@ -31,22 +31,26 @@ Je l'ai utilisé notamment, au moment de déplacer les fichier qui comportent un
 > BONNE PRATIQUE : savoir où je suis placée pour manipuler plus facilement les documents. 
 
 
-# SCRIPT BASH 
+## SCRIPT BASH 
 
-## EXERCICE 1 
+### EXERCICE 1 
 
 J'ai du utiliser grape -r comme une recherche récursive dans tous les sous-dossiers, parce que dans la commande cat 2016/*, * cible aussi les dossier, pas seulement les fichiers .ann, j'ai du donc changer ma commande à celle-là : 
 
 - grep -r "Location" 2016/ | wc -l
 
 
+Pour le reste, il ne faut pas oublier les définitions des commandes ci-dessous: 
+
+
 - wc - l = compte les lignes trouvées.
 
 - grep = sélectionne les ligne où "mot" apparait
 
-- !/usr/bin/bash
+- !/usr/bin/bash = shebang 
 
 
-##Exercice 2 
+
+
 
  
