@@ -1,56 +1,86 @@
 #!/bin/bash
 
-CHEMIN="$HOME/cours/plurital/PPE1-2025/miniprojet"
-
-# Validation des arguments
-if [ $# -ne 2 ]
+if [ $# -ne 1 ]
 then
-     echo "le nombre d'arguments est incorrect !"
-     exit
+	echo "Le script attend exactement un argument"
+	exit 1
 fi
 
+fichier_urls=$1
 
-echo "arguments donnés" : $1 $2
+echo "<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Programmation et Projet Encadré</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <div class="container is-fluid">
+      <figure class="image">
+        <img src="../images/plurital-logo.jpg" />
+      </figure>
+      <nav class="navbar mb-6" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="../../index.html"> Accueil </a>
+            <a class="navbar-item"> Script </a>
+            <a class="navbar-item has-background-info-light"> Tableaux </a>
+          </div>
+        </div>
+      </nav>
+      <table class="table mx-auto">
+        <thead>
+          <tr>
+            <th><abbr title="Index">index</abbr></th>
+            <th>url</th>
+            <th><abbr title="Code">http code</abbr></th>
+            <th><abbr title="Encoding">encodage</abbr></th>
+            <th><abbr title="Words">nombre de mots</abbr></th>
+          </tr>
+        </thead>
+        <tbody>"
 
-#Chemin d'accès au fichier de données en entrée
-FICHIER_URLS=$1
-#Nom du fichier de sortie
-FICHIER_TSV=$2
+lineno=1
+while read -r line
+do
+	data=$(curl -s -i -L -w "%{http_code}\n%{content_type}" -o ./.data.tmp $line)
+	http_code=$(echo "$data" | head -1)
+	encoding=$(echo "$data" | tail -1 | grep -Po "charset=\S+" | cut -d"=" -f2)
 
-# Vérifions si le fichier d'entrée existe
-if [ ! -f $CHEMIN/$FICHIER_URLS ]
-then
-    echo "le fichier n'existe pas !"
-    exit
-fi
+	if [ -z "${encoding}" ]
+	then
+		encoding="N/A" # petit raccourci qu'on peut utiliser à la place du if : encoding=${encoding:-"N/A"}
+	fi
 
-#Variable OUT pointant vers le fichier tsv pour l'écriture des données
-OUT="$CHEMIN/tableaux/$FICHIER_TSV"
-: > "$OUT"
+	nbmots=$(cat ./.data.tmp | lynx -dump -nolist -stdin | wc -w)
 
-OK=0
-NOK=0
+	echo -e "			<tr class="is-light">
+            <th>$lineno</th>
+            <td>
+              <a
+                href="$line"
+                target="_blank"
+                rel="noopener noreferrer"
+                >$line</a
+              >
+            </td>
+            <td>$http_code</td>
+            <td>$encoding</td>
+            <td>$nbmots</td>
+          </tr>"
 
-#Lecture du fichier ligne à ligne
-while read -r LINE;
-do #Pour chaque ligne (URL) du fichier d'URLs courant
-  if [[ $LINE =~ ^https?:// ]]; # Vérifie la validité de l'URL
-  then
-	# code HTTP de réponse à la requête
-	HTTP_CODE="$(curl -s -I $LINE | grep "HTTP" | cut -d' ' -f2)"
-	# encodage de la page, s’il est présent
-	CONTENT_TYPE="$(curl -s -I $LINE | grep -i "charset" | cut -d'=' -f2| tr -d '\r[:space:]')"
-	# nombre de mots dans la page
-	NOMBRE_MOTS="$(lynx -dump  $LINE | wc -w | xargs | grep -v '^[A-Za-z]')"
-	# écriture de la ligne dans le fichier tsv avec des tabulations et un retour à la ligne
-	printf "%d\t%s\t%s\t%s\t%s\n" "$OK" "$LINE" "$HTTP_CODE" "$CONTENT_TYPE" "$NOMBRE_MOTS">> "$OUT"
-	# additionne le comptage
-    OK=$(expr $OK + 1)
-  else
-    NOK=$(expr $NOK + 1)
-    continue
-  fi
-done < "$CHEMIN/$FICHIER_URLS"
+	lineno=$(expr $lineno + 1)
+done < $fichier_urls
 
-echo "$OK URLs et $NOK lignes douteuses"
+echo "		</tbody>
+      </table>
+    </div>
+  </body>
+</html>"
 
+
+rm ./.data.tmp

@@ -1,88 +1,166 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <style>
-table, th, td {
-  border:1px solid black;
-}
-</style>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TABLEAU MINIPROJET</title>
-</head>
-<body>
-    <table style="width:100%">
-        <tr>
-            <th>index</th>
-            <th>TABLEAU URL</th>
-            <th>http code</th>
-            <th>encodage</th>
-            <th>nombre de mots</th>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>https://fr.wikipedia.org/wiki/Robot</td>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Programmation et Projet Encadré</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <div class="container is-fluid">
+      <figure class="image">
+        <img src="../images/plurital-logo.jpg" />
+      </figure>
+      <nav class="navbar mb-6" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="../../index.html"> Accueil </a>
+            <a class="navbar-item"> Script </a>
+            <a class="navbar-item has-background-info-light"> Tableaux </a>
+          </div>
+        </div>
+      </nav>
+      <table class="table mx-auto">
+        <thead>
+          <tr>
+            <th><abbr title="Index">index</abbr></th>
+            <th>url</th>
+            <th><abbr title="Code">http code</abbr></th>
+            <th><abbr title="Encoding">encodage</abbr></th>
+            <th><abbr title="Words">nombre de mots</abbr></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="is-light">
+            <th>0</th>
+            <td>
+              <a
+                href="https://fr.wikipedia.org/wiki/Robot"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wikipedia.org/wiki/Robot</a
+              >
+            </td>
             <td>200</td>
             <td>UTF-8</td>
             <td>7566</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>https://fr.wikipedia.org/wiki/Robot_de_cuisine</td>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td>
+              <a
+                href="https://fr.wikipedia.org/wiki/Robot_de_cuisine"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wikipedia.org/wiki/Robot_de_cuisine</a
+              >
+            </td>
             <td>200</td>
             <td>UTF-8</td>
             <td>1526</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>https://fr.wikipedia.org/wiki/Bot_informatique</td>
+          </tr>
+          <tr class="is-light">
+            <th>2</th>
+            <td>
+              <a
+                href="https://fr.wikipedia.org/wiki/Bot_informatique"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wikipedia.org/wiki/Bot_informatique</a
+              >
+            </td>
             <td>200</td>
             <td>UTF-8</td>
             <td>3264</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>https://fr.wikipedia.org/wiki/Atlas_(robot)</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>
+              <a
+                href="https://fr.wikipedia.org/wiki/Atlas_(robot)"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wikipedia.org/wiki/Atlas_(robot)</a
+              >
+            </td>
             <td>200</td>
             <td>UTF-8</td>
             <td>1522</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>https://roboty.magistry.fr</td>
+          </tr>
+          <tr class="is-light">
+            <th>4</th>
+            <td>
+              <a
+                href="https://roboty.magistry.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://roboty.magistry.fr</a
+              >
+            </td>
             <td>0</td>
             <td>0</td>
             <td>0</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>
+              <a
+                href="https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)</a
+              >
+            </td>
             <td>404</td>
             <td>UTF-8</td>
             <td>595</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>https://fr.wiktionary.org/wiki/robot</td>
+          </tr>
+          <tr class="is-light">
+            <th>6</th>
+            <td>
+              <a
+                href="https://fr.wiktionary.org/wiki/robot"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wiktionary.org/wiki/robot</a
+              >
+            </td>
             <td>429</td>
             <td>utf-8</td>
             <td>6547</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots</td>
+          </tr>
+          <tr>
+            <th>7</th>
+            <td>
+              <a
+                href="https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots</a
+              >
+            </td>
             <td>429</td>
             <td>utf-8</td>
             <td>1453</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>https://fr.wikipedia.org/wiki/Robotique</td>
+          </tr>
+          <tr class="is-light">
+            <th>8</th>
+            <td>
+              <a
+                href="https://fr.wikipedia.org/wiki/Robotique"
+                target="_blank"
+                rel="noopener noreferrer"
+                >https://fr.wikipedia.org/wiki/Robotique</a
+              >
+            </td>
             <td>200</td>
             <td>utf-8</td>
             <td>15039</td>
-        </tr>
-    </table> 
-</body>
-
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
